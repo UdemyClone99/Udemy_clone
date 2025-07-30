@@ -11,11 +11,16 @@ import Dashboard from './pages/educator/Dashboard'
 import AddCourse from './pages/educator/AddCourse'
 import StudentsEnrolled from './pages/educator/StudentsEnrolled'
 import MyCourses from './pages/educator/MyCourses'
-import Navbar from './components/student/Navbar'  
+import Navbar from './components/student/Navbar'
 
 const App = () => {
 
+  const isEducatorRoute = useMatch('/educator/*')
+
   return (
+    <div className='text-default min-h-screen bg-white'>
+      {!isEducatorRoute && <Navbar />}
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/course-list' element={<CoursesList />} />
@@ -31,6 +36,7 @@ const App = () => {
           <Route path='student-enrolled' element={<StudentsEnrolled />} />
         </Route>
       </Routes>
+    </div>
   )
 }
 
